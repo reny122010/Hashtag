@@ -6,7 +6,7 @@ var mongojs = require('mongojs');
 var dbHashtag = mongojs('Hashtag', ['Hashtag']); 
 
 //Administrator of version
-var contactRouterFunction = require('./routes/hashModule/v1/module.js');
+var contactRouterFunction = require('./routes/api/v1.js');
 var contactRouterV1 = contactRouterFunction.module(dbHashtag);
 
 app.use('/api/v1/', contactRouterV1);
