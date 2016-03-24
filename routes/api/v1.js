@@ -7,7 +7,7 @@ function retornarErroAoUsuario(req, res, error) {
 }
 
 exports.module = function(dbConnection) {
-	//Using restful, responsible for to insert element of Mongodb
+	//Using restful, get parameter and call of models for operate.
 	router.post('/hashtag/', function (req, res) {
 		hashtagModel.createHashtag(
 			{
@@ -21,7 +21,7 @@ exports.module = function(dbConnection) {
 				res.json({ id: id });
 		});
 	});
-	
+	//Using restful, get parameter and call of models for operate.
 	//Using restful, responsible for to remove element of Mongodb
 	router.delete('/hashtag/:id', function (req, res) {
 		hashtagModel.deleteHashtag({ id: req.params.id }, function (err, data) {
@@ -29,8 +29,7 @@ exports.module = function(dbConnection) {
 			res.json({ ok: 1 });
 		});
 	});
-
-	//Using restful, responsible for to list element of Mongodb
+	//Using restful, get parameter and call of models for operate.
 	router.get('/hashtag/', function (req, res) {
 		hashtagModel.findHashtagsByDate({ date: req.body.data,
 										  amount : req.body.amount },
@@ -40,5 +39,5 @@ exports.module = function(dbConnection) {
 		});
 	});
 
-	 return router;
+	return router;
 }

@@ -1,6 +1,7 @@
 /*
  * Hashtag Model
  */
+ 
 var express =  require('express');
 
 function HashtagModel (mongoConnection) {
@@ -10,7 +11,7 @@ function HashtagModel (mongoConnection) {
 HashtagModel.prototype = {
 	constructor: HashtagModel,
 
-	// Insere uma hashtag
+	// Responsible of to make parsing of data and insert elements in Mongodb
 	createHashtag: function (args, done) {
 		if (!args.hashtag || !args.hashtag.match(/^#(.*)/))
 			return done(new Error("Argumento 'hashtag' inexistente/invalido"));
@@ -30,7 +31,7 @@ HashtagModel.prototype = {
 			return done(null, data._id);
 		});
 	},
-
+	// Responsible of to make parsing of data and delete elements in Mongodb
 	deleteHashtag: function (args, done) {
 		if (!args.id)
 			return done(new Error("Argumento 'ID' inexistente"));
@@ -41,7 +42,7 @@ HashtagModel.prototype = {
 			done(null, data);
 		});
 	},
-
+	// Responsible of to make parsing of data and list some elements in Mongodb
 	findHashtagsByDateHashtag: function (args, done) {
 		if (!args.date)
 			return done(new Error("Argumento 'ID' inexistente"));
@@ -53,8 +54,6 @@ HashtagModel.prototype = {
 			done(null, data);
 		});
 	}
-
-
 }
 module.exports = {
 	HashtagModel: HashtagModel
