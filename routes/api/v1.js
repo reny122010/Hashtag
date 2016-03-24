@@ -1,5 +1,5 @@
 router = require('express').Router();
-var express =  require('../../models/v1.js');
+var models =  require('../../models/v1.js');
 
 function retornarErroAoUsuario(req, res, error) {
 	res.statusCode(500);
@@ -22,7 +22,6 @@ exports.module = function(dbConnection) {
 		});
 	});
 	//Using restful, get parameter and call of models for operate.
-	//Using restful, responsible for to remove element of Mongodb
 	router.delete('/hashtag/:id', function (req, res) {
 		hashtagModel.deleteHashtag({ id: req.params.id }, function (err, data) {
 			if (error) return retornarErroAoUsuario(req, res, error);
